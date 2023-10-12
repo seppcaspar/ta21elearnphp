@@ -9,8 +9,7 @@ class PublicController {
     public function index(){
         
         $posts = Post::all();
-        $name = 'Kaspar';
-        view('index', compact('name'));
+        view('index', compact('posts'));
     }
 
     public function about(){
