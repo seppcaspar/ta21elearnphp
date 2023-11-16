@@ -15,6 +15,12 @@ class PostsController {
     }
 
     public function store(){
+        $name = md5($_FILES['image']['name'] . microtime() . rand(0, 999999999999)) . '.' . pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+        move_uploaded_file(
+            $_FILES['image']['tmp_name'],
+            __DIR__ . '/../../public/uploads/' . $name
+        );
+        dd($_FILES, $_POST);
         $post = new Post();
         $post->title = $_POST['title'];
         $post->body = $_POST['body'];
